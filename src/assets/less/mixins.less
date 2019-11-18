@@ -1,0 +1,134 @@
+// @import '~antd/lib/button/style/mixin.less';
+/**
+ * 批量生成class
+ * @param  {string} @rules   规则
+ * @param  {list} @valueList 待生成列表
+ * @param  {list} @nameList  待生成列表名
+ * @eg
+    .fz {
+      @list: 12, 14, 16;
+      .loop({
+        font-size: unit(@value, px);
+      }, @list);
+    }
+    .fz {
+      @list: 18, 20;
+      @name: bar, foo;
+      .loop({
+        font-size: unit(@value, px);
+      }, @list);
+    }
+ * @return
+    .fz_12 {
+      font-size: 12px;
+    }
+    .fz_14 {
+      font-size: 14px;
+    }
+    .fz_16 {
+      font-size: 16px;
+    }
+    .fz_bar {
+      font-size: 18px;
+    }
+    .fz_foo {
+      font-size: 20px;
+    }
+ */
+.loop(@rules, @valueList, @nameList: @valueList) {
+  .for(@index) when (@index > 0) {
+    .for((@index - 1));    // next iteration
+    @value: extract(@valueList, @index);
+    @name: extract(@nameList, @index);
+    &_@{name} {
+      @rules();
+    }
+  }
+  .for(length(@valueList)); // launch the loop
+}
+
+// .loop(@attr, @unit, @valueList, @nameList: @valueList) {
+//   .for(@index) when (@index > 0) {
+//     .for((@index - 1));    // next iteration
+//     @value: extract(@valueList, @index);
+//     @name: extract(@nameList, @index);
+//     &_@{name} when (isnumber(@value)) {
+//       @{attr}: unit(@value, escape(@unit));
+//     }
+//     &_@{name} when not (isnumber(@value)) {
+//       @{attr}: @value;
+//     }
+//   }
+//   .for(length(@valueList)); // launch the loop
+// }
+
+/* 单行文字溢出省略 */
+.text-truncate(@foo: 0) {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/* 多行文字溢出隐藏 */
+.text-truncate-line(@n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @n;
+  -webkit-box-orient: vertical;
+}
+
+/* 背景居中 */
+.bgi-center(@foo: 0) {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+/* 背景沉底 */
+.bgi-bottom(@foo: 0) {
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: cover;
+}
+/* 背景顶头 */
+.bgi-top(@foo: 0) {
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  background-size: cover;
+}
+
+/* 背景渐变 */
+.linear-gradient(@startColor, @endColor, @defultColor, @start: left, @end: right) {
+  background-color: @defultColor;
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -webkit-gradient(linear, @start, @end, from(@startColor), to(@endColor));
+  background: linear-gradient(to @end, @startColor, @endColor);
+}
+
+.btn() {
+  box-shadow: 0 2px 11px 0 rgba(0, 0, 0, .9);
+}
+
+.placeholder(@color: #CCCCCC) {
+  // Firefox
+  &::-moz-placeholder {
+    color: @color;
+    opacity: 1;
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+}
+
+.text-linear-gradient(@startColor, @endColor, @defultColor, @start: left, @end: right) {
+  .linear-gradient(@startColor, @endColor, @defultColor, @start, @end);
+  -webkit-background-clip: text;
+  color: transparent;
+}

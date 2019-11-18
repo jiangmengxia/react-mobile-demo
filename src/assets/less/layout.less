@@ -1,0 +1,309 @@
+/*
+  PC端优先策略
+  移动端布局class以sm开头
+  screen < 768px  => sm (small screen)
+ */
+.box_border {
+  box-sizing: border-box;
+}
+
+.filter_gray {
+  filter: grayscale(100%);
+  filter: gray;
+}
+
+// *************** font-size
+.fz {
+  @list: 10, 12, 14, 15, 16, 18, 20, 22, 24, 28, 30, 32, 36, 40, 48, 50, 52, 56, 60, 70, 75, 80, 88;
+  .loop({
+    font-size: unit(@value, px);
+    // @media screen and (max-width: @media-mobile) {
+    //   font-size: unit(@value * 2, px);
+    // }
+  }, @list)
+}
+
+// *************** font-weight
+.fw {
+  @list: bold, bolder, 100, 200, 300, 400, 500, 600, 700, 800, 900, normal;
+  .loop({
+    font-weight: @value;
+  }, @list);
+}
+
+// *************** color
+.c {
+  @list: @primary-color, #4792F9  , #454D57, #A2AAFF, #AFB0D4   , #EB7E44, #4285F4, #4792F9  , #A4C4FA , #E6C159, #FADD44    , #9ACEFF, #FD796E, #DF4040 , @green-color, #FE978F, #BCBCBC, #000000;
+  @name: primary       , lightBlue, black  , purple , weakPurple, orange , blue   , lightBlue, weakBlue, yellow , lightYellow, azure  , red    , lightRed, green       , pink   , gray   , pureBlack;
+  .loop({
+    color: @value;
+  }, @list, @name);
+}
+.c {
+  @list: #3D3D3D, #484848, #5e5e5e, #666666, #7E7E7E, #8F8F8F, #959595, #999999, #A2A2A2, #ABABAB, #B0B0B0, #c7c7c7, #D1D1D1, #F7F7F7, #fff;
+  @name: 3d     , 48     , 5e     , 66     , 7e     , 8f     , 95     , 99     , a2     , ab     , b0     , c7     , d1     , f7     , ff  ;
+  .loop({
+    color: @value;
+  }, @list, @name);
+}
+
+// *************** background-color
+.bgc {
+  @list: #fff, #F7F7F7, #F4F4F4;
+  @name: ff  , f7     , f4;
+  .loop({
+    background-color: @value;
+  }, @list, @name);
+}
+.bgc {
+  // 带透明度的背景 P 为百分比 percentage
+  @list: fade(#fff, 10%);
+  @name: ffP10;
+  .loop({
+    background-color: @value;
+  }, @list, @name);
+}
+
+// *************** placeholder
+.phc_primary::-webkit-input-placeholder {
+  color: @primary-color !important;
+}
+
+// *************** padding
+.pt {
+  @list: 0, 5, 8, 10, 15, 20, 25, 30, 36, 40, 45, 50, 55, 60, 70, 75, 80, 120;
+  .loop({
+    padding-top: unit(@value, px);
+  }, @list);
+}
+.pb {
+  @list: 0, 2, 5, 8, 10, 15, 20, 30, 35, 40, 80;
+  .loop({
+    padding-bottom: unit(@value, px);
+  }, @list);
+}
+.pr {
+  @list: 0, 5, 8, 10, 15, 20, 30, 40, 80;
+  .loop({
+    padding-right: unit(@value, px);
+  }, @list);
+}
+.pl {
+  @list: 0, 5, 8, 10, 15, 20, 30, 40, 45, 60, 80;
+  .loop({
+    padding-left: unit(@value, px);
+  }, @list);
+}
+
+// *************** margin
+.mt { // negative 负值
+  @list: -4, -5, -10;
+  @name: N4, N5, N10;
+  .loop({
+    margin-top: unit(@value, px);
+  }, @list, @name);
+}
+.mt {
+  @list: 0, 5, 6, 8, 10, 15, 18, 20, 25, 28, 30, 32, 35, 40, 45, 50, 55, 60, 65, 75, 80, 100, 140;
+  .loop({
+    margin-top: unit(@value, px);
+  }, @list);
+}
+.mr { // negative 负值
+  @list: -10, -25;
+  @name: N10, N25;
+  .loop({
+    margin-right: unit(@value, px);
+  }, @list, @name);
+}
+.mr {
+  @list: 0, 3, 5, 8, 10, 15, 20, 25, 30;
+  .loop({
+    margin-right: unit(@value, px);
+  }, @list);
+}
+.mb {
+  @list: 0, 1, 3, 5, 8, 10, 15, 16, 18, 20, 24, 25, 30, 35, 40, 50, 65, 85;
+  .loop({
+    margin-bottom: unit(@value, px);
+  }, @list);
+}
+.mb {
+  @list: -5, -10;
+  @name: N5, N10;
+  .loop({
+    margin-bottom: unit(@value, px);
+  }, @list, @name);
+}
+.ml {
+  @list: 0, 3, 5, 8, 10, 15, 18, 20, 25, 40, 45, 50, 100;
+  .loop({
+    margin-left: unit(@value, px);
+  }, @list);
+}
+.ml { // negative 负值
+  @list: -10, -25;
+  @name: N10, N25;
+  .loop({
+    margin-left: unit(@value, px);
+  }, @list, @name);
+}
+.m_center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// line-height
+.lh {
+  @list: 1em, 1.3, 0;
+  @name: T10, T13, 0;
+  .loop({
+    line-height: @value;
+  }, @list, @name);
+}
+
+// opacity
+.op {
+  @list: 0, 30, 60, 80, 100;
+  .loop({
+    opacity: @value / 100;
+  }, @list);
+}
+
+// border-radius
+.bd_radius-7 {
+  border-radius: 7px;
+}
+
+// flex
+.flex {
+  &_row { // 横排不换行
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  &_col { // 竖排不换行
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  &_wrap {
+    flex-wrap: wrap;
+  }
+  &_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &_auto {
+    flex: 0 0 auto;
+  }
+  &_full {
+    flex: 1 1 100%;
+  }
+  & {
+    // flex: 0 1 50%;
+    @list: 6, 11, 12;
+    .loop({
+      flex: 0 1 unit(@value/24*100, %);
+    }, @list);
+  }
+  & { // flex_jc
+    @list: center, space-around, space-between;
+    @name: jc-c  , jc-sa       , jc-sb;
+    .loop({
+      justify-content: @value;
+    }, @list, @name);
+  }
+  & { // flex_ai
+    @list: center, flex-end, flex-start;
+    @name: ai-c  , ai-fe   , ai-fs;
+    .loop({
+      align-items: @value;
+    }, @list, @name);
+  }
+  & { // flex_as
+    @list: flex-end, auto;
+    @name: as-fe   , as-auto;
+    .loop({
+      align-self: @value;
+    }, @list, @name);
+  }
+}
+
+// *************** float
+.f {
+  @list: left, right, none;
+  .loop({
+    float: @value;
+  }, @list);
+}
+
+// *************** overflow
+.of_hidden {
+  overflow: hidden;
+}
+.of_auto {
+  overflow: auto;
+}
+.of_ellipsis {
+  .text-truncate()
+}
+.of_Yauto {
+  overflow-y: auto;
+}
+
+// *************** text-align
+.ta {
+  @list: center, right, left;
+  .loop({
+    text-align: @value;
+  }, @list);
+}
+
+// *************** vertical-align
+.va {
+  @list: middle;
+  .loop({
+    vertical-align: @value;
+  }, @list);
+}
+
+// *************** cursor
+.cur_p {
+  cursor: pointer;
+}
+// *************** display
+.d {
+  @list: block, inline-block, flex, inline-flex, none;
+  @name: block, iblock      , flex, iflex      , none;
+  .loop({
+    display: @value;
+  }, @list, @name);
+}
+// *************** text-style
+.udl {
+  text-decoration: underline;
+}
+// 移动端css
+@media screen and (max-width: @media-mobile) {
+  .sm_box_border {.box_border()}
+  .sm_d {.d()}
+  .sm_fz {.fz()}
+  .sm_fw {.fw()}
+  .sm_c {.c()}
+  .sm_lh {.lh()}
+  .sm_op {.op()}
+  .sm_bgc {.bgc()}
+  .sm_pt {.pt()}
+  .sm_pb {.pb()}
+  .sm_pr {.pr()}
+  .sm_pl {.pl()}
+  .sm_mt {.mt()}
+  .sm_mr {.mr()}
+  .sm_mb {.mb()}
+  .sm_ml {.ml()}
+  .sm_flex {.flex()}
+  .sm_ta {.ta()}
+  .sm_va {.va()}
+  .sm_f {.f()}
+  // .sm_m_center {.m_center()}
+}

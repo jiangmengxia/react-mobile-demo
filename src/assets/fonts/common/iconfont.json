@@ -1,0 +1,44 @@
+{
+  "id": "1477387",
+  "name": "react-脚手架",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "494633",
+      "name": "success",
+      "font_class": "success",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
+      "icon_id": "494640",
+      "name": "fail",
+      "font_class": "fail",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "1223872",
+      "name": "info",
+      "font_class": "info1",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "1363835",
+      "name": "warn",
+      "font_class": "warn",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "9928519",
+      "name": "error",
+      "font_class": "error",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    }
+  ]
+}

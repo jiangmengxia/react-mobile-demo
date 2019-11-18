@@ -1,0 +1,208 @@
+* {
+  -webkit-box-sizing         : border-box;
+  -moz-box-sizing            : border-box;
+  box-sizing                 : border-box;
+  -webkit-tap-highlight-color: transparent;
+  /* 取消点击高亮 */
+  -webkit-appearance: none;
+  /* 取消默认的样式 */
+  -webkit-text-size-adjust: none;
+  /* 取消iphone转屏字号变大 */
+  -webkit-font-smoothing: antialiased;
+  /* 取消锯齿 */
+  -webkit-box-shadow: none;
+  /* 取消阴影 */
+  -webkit-border-radius: 0;
+  /* 取消圆角 */
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+form,
+dl,
+dt,
+dd,
+span,
+p,
+button,
+input,
+th,
+td,
+em {
+  margin     : 0;
+  padding    : 0;
+  font-weight: normal;
+  word-wrap  : break-word;
+  word-break : break-all;
+}
+
+html,
+body {
+  height      : 100%;
+  touch-action: manipulation;
+}
+
+img {
+  border: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  // background-color: rgba(0, 0, 0, 0.02);
+  // height          : 100%;
+  background-color   : @bg-color  !important;
+  color              : rgba(0, 0, 0, 0.75);
+}
+
+// 对webkit内核浏览器的滚动条样式及交互进行统一
+// 使用此class可以保持滚动条常驻
+// *
+* {
+
+  // 普通元素
+  &::-webkit-scrollbar {
+    width : 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius   : 8px;
+    background-color: rgba(50, 50, 50, .2);
+
+    &:hover {
+      background-color: rgba(50, 50, 50, .4);
+    }
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track-piece {
+    border-radius: 8px;
+    width        : 0;
+    height       : 0;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+body * {
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, .3);
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, .2);
+
+    &:hover {
+      background-color: rgba(50, 50, 50, .4);
+    }
+  }
+}
+
+.noScrollBar {
+  &::-webkit-scrollbar {
+    width : 0px;
+    height: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius   : 0px;
+    background-color: rgba(50, 50, 50, .2);
+
+    &:hover {
+      background-color: rgba(50, 50, 50, .4);
+    }
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track-piece {
+    border-radius: 0px;
+    width        : 0;
+    height       : 0;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+.clearfix {
+  zoom: 1
+}
+
+.clearfix:after,
+.clearfix:before {
+  content: ' ';
+  display: table
+}
+
+.clearfix:after {
+  clear: both
+}
+
+.icon {
+  width         : 1em;
+  height        : 1em;
+  vertical-align: -0.15em;
+  fill          : currentColor;
+  overflow      : hidden;
+}
+
+@media screen and (max-width: @media-mobile) {
+  body {
+    font-size: 28px !important;
+  }
+
+  * {
+    &::-webkit-scrollbar-thumb {
+      background-color: fade(@primary-color, 50%);
+
+      &:hover {
+        background-color: fade(@primary-color, 50%);
+      }
+    }
+  }
+
+  body * {
+    &::-webkit-scrollbar-thumb {
+      background-color: fade(@primary-color, 50%);
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: fade(@primary-color, 50%);
+
+      &:hover {
+        background-color: fade(@primary-color, 50%);
+      }
+    }
+  }
+}
+
+// @media all and (orientation: portrait) {
+//   body div {background: red;}
+// }
+// @media all and (orientation: landscape) {
+//   body div {background: blue; }
+// }
+
+
+#root {
+  height: 100%;
+  width : 100%;
+}
